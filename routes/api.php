@@ -18,5 +18,10 @@ use App\Http\Controllers\{ProductController,SaleController};
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::delete('/product/delete/{id}',[ProductController::class,'deleteAction'])->name('delete.product');
+Route::get('/product/get/{name}',[ProductController::class,'getProduct'])->name('get.product');
+Route::get('/product/stock/{id}',[SaleController::class,'getStock'])->name('get.stock');
+Route::post('/sale/pay',[SaleController::class,'soldAction'])->name('set.sale');
 
-Route::post('/product/create',[ProductController::class,'createAction']);
+
+

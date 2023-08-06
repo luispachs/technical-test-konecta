@@ -14,6 +14,9 @@ use App\Http\Controllers\{SaleController,ProductController};
 |
 */
 
-Route::get('/', [SaleController::class,'index']);
+Route::get('/', [SaleController::class,'index'])->name('main');
+Route::any('/product/list',[ProductController::class,'index'])->name('index.product');
+Route::post('/product/create',[ProductController::class,'createAction'])->name('create.product');
+Route::get('/product/update/{id}',[ProductController::class,'updateViewAction'])->name('update.product');
+Route::post('/product/update',[ProductController::class,'updateAction'])->name('send.update.product');
 
-Route::get('/administration',[ProductController::class,'index']);
